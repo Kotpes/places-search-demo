@@ -1,0 +1,24 @@
+.results {
+}
+
+.subtitle {
+  color: var(--black);
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.foundLocation {
+  list-style: none;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+.foundLocation li {
+  padding: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  color: var(-link-blue);
+}
+.foundLocation li:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
