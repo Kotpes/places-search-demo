@@ -1,6 +1,7 @@
 //@flow
 import React from "react";
-import css from './PlacesList.module.css'
+import { Link } from "@reach/router";
+import css from "./PlacesList.module.css";
 
 type Props = {
   foundLocations: Array<Object>
@@ -10,7 +11,9 @@ const List = ({locations}) => {
   return locations.map(location => {
     const {id, name} = location
     return (
-      <li key={id}>{name}</li>
+      <li key={id}>
+        <Link to={`places/${id}`}>{name}</Link>
+      </li>
     )
   })
 }

@@ -1,0 +1,3 @@
+.container {
+  composes: app from "../home/Home.module.css";
+}
