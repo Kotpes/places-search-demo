@@ -1,8 +1,8 @@
 //@flow
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Search from '../search/Search'
 import PlacesList from '../placesList/PlacesList'
-import css from './Home.module.css';
+import css from './Home.module.css'
 
 const foundLocations = [
   {
@@ -22,6 +22,7 @@ const foundLocations = [
     name: "Baari karpanen"
   }
 ]
+
 
 type Location = {
   id: string,
@@ -48,11 +49,12 @@ class App extends Component<{}, State> {
 
   render() {
     const {filteredLocations} = this.state
+
     return (
       <div className={css.app}>
         <h1 className={css.title}>Search for place</h1>
         <Search onChange={(value) => this.onSearch(value)} />
-        <PlacesList foundLocations={filteredLocations} />
+        <PlacesList foundLocations={filteredLocations} />        
       </div>
     );
   }

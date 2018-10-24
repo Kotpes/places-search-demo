@@ -16,8 +16,8 @@
 .foundLocation li {
   padding: 15px;
   font-weight: bold;
-  font-size: 17px;
-  cursor: pointer;
+  font-size: 16px;
+  color: var(--link-blue);
 }
 .foundLocation li a {
   display: block;
@@ -26,4 +26,9 @@
 }
 .foundLocation li:not(:last-child) {
   border-bottom: 1px solid #eee;
+}
+
+.foundLocation li.emptySearchMessage {
+  color: #ddd;
+  font-weight: 300;
 }
