@@ -5,7 +5,7 @@ import { ApolloProvider } from 'react-apollo';
 import { AsyncHome, AsyncPlaceOverview} from './routes';
 
 const client = new ApolloClient({
-  uri: "https://graphqlserver-bltoxgfwnf.now.sh/graphql"
+  uri: "https://place-search-graphql.now.sh/graphql"
 });
 
 const App = () => (

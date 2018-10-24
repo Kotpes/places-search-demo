@@ -21,8 +21,8 @@ const List = ({locations}) => {
 }
 
 const GET_SUGGESTED_PLACES = gql`
-  query GetSuggestedVenues($lat: Float!, $lng: Float!) {
-    getSuggestedVenues(lat: $lat, lng: $lng) {
+  query GetSuggestedVenues($lat: Float!, $lng: Float!, $limit: Int) {
+    suggestedVenues(lat: $lat, lng: $lng, limit: $limit) {
       id
       name
       location {
@@ -41,18 +41,16 @@ const lng = 24.922370
 
 
 const PlacesList = (props : Props) => {
-  const {foundLocations} = props
-
-
   return (
     <Query
       query={GET_SUGGESTED_PLACES}
-      variables={{lat, lng}}
+      variables={{lat, lng, limit: 10}}
     >
       {({ loading, error, data }) => {
         if (loading) return null;
         if (error) return `Error!: ${error}`;
         console.log(data);
+        const foundLocations = data.suggestedVenues
         
 
         return (
