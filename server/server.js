@@ -20,7 +20,7 @@ const typeDefs = `
   }
 
   type Location {
-    address: String!
+    address: String
     lat: Float!
     lng: Float!
     distance: Int!
@@ -41,7 +41,7 @@ const resolvers = {
     },
     searchForVenue: async(parent, args) => {
       const {query, lat, lng, limit} = args
-      const requestUrl = `${baseURL}/venues/search?client_id=${client_id}&client_secret=${client_secret}&v=20180323&ll=${lat}, ${lng}&query=${query}&intent=browse&limit=${limit}&radius=3000`
+      const requestUrl = `${baseURL}/venues/search?client_id=${client_id}&client_secret=${client_secret}&v=20180323&ll=${lat}, ${lng}&query=${query}&intent=browse&limit=${limit}&radius=10000`
       const res = await fetch(requestUrl)
       const json = await res.json()
       const venues = json.response.venues

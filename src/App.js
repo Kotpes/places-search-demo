@@ -4,6 +4,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { AsyncHome, AsyncPlaceOverview} from './routes';
 
+//Replace uri with http://localhost:4000/graphql if using local server
 const client = new ApolloClient({
   uri: "https://place-search-graphql.now.sh/graphql"
 });
