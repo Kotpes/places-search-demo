@@ -18,6 +18,9 @@
   font-weight: bold;
   font-size: 16px;
   color: var(--link-blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .foundLocation li a {
   display: block;
@@ -31,4 +34,10 @@
 .foundLocation li.emptySearchMessage {
   color: #ddd;
   font-weight: 300;
+}
+
+.distance {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--dark-gray);
 }

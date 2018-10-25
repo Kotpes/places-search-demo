@@ -4,6 +4,7 @@ import {Query} from 'react-apollo'
 import gql from 'graphql-tag'
 import Search from '../search/Search'
 import PlacesList from '../placesList/PlacesList'
+import Loading from '../shared/Loading'
 import css from './Home.module.css'
 
 type State = {
@@ -52,7 +53,6 @@ class App extends Component<{}, State> {
 
   onSearch = (value: string) => {
     const venueName = value.toLowerCase()
-    console.log(venueName);
     this.setState({searchQuery: venueName})
   
   }
@@ -70,8 +70,8 @@ class App extends Component<{}, State> {
           variables={{lat, lng, limit: 10}}
         >
           {({ loading, error, data }) => {
-            if (loading) return null;
-            if (error) return `Error!: ${error}`;
+            if (loading) return <Loading />
+            if (error) return `Error!: ${error}`
             const foundLocations = data.suggestedVenues
             
             return (

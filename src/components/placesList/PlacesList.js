@@ -1,8 +1,9 @@
 //@flow
 import React from 'react';
-import { Link } from '@reach/router';
 import {Query} from 'react-apollo'
 import gql from 'graphql-tag'
+import Loading from '../shared/Loading'
+import List from './List'
 import css from './PlacesList.module.css';
 
 
@@ -10,13 +11,15 @@ type Location = {
   address: string,
   lat: number,
   lng: number,
+  distance: number
 }
 
-type Venue = {
+export type Venue = {
   id: string,
   name: string,
   location: Location
 }
+
 type Props = {
   foundLocations: Array<Object>,
   searchQuery: string,
@@ -40,19 +43,7 @@ const SEARCH_VENUES = gql`
     }
   }
 }
-`;
-
-const List = ({locations}) => {
-  return locations.map(location => {
-    const {id, name} = location
-    return (
-      <li key={id}>
-        <Link to={`places/${id}`}>{name}</Link>
-      </li>   
-    )
-  })
-}
-
+`
 
 class PlacesList extends React.Component<Props, State> {
   state = {
@@ -61,13 +52,11 @@ class PlacesList extends React.Component<Props, State> {
 
   render() {
     const {locations} = this.state
-    const {searchQuery, lat, lng} = this.props
-    console.log(searchQuery);
-    
+    const {searchQuery, lat, lng} = this.props    
 
     return (
       <section className={css.results}>
-        <h2 className={css.subtitle}>Nearby recommended places</h2>
+        <h2 className={css.subtitle}>Venues</h2>
   
         <ul className={css.foundLocation}>
           {locations.length > 0 && searchQuery === ''
@@ -78,7 +67,7 @@ class PlacesList extends React.Component<Props, State> {
                 variables={{lat, lng, query: searchQuery}}
               >
                 {({ loading, error, data }) => {
-                  if (loading) return null;
+                  if (loading) return <Loading />
                   if (error) return `Error!: ${error}`;
                   const foundLocations = data.searchForVenue
                   

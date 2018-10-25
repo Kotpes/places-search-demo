@@ -4,13 +4,14 @@
 
 ## Run up
 ### Environmental variables
-You'll need to provice following variables for local graphql server to work: `REACT_APP_SECRET_KEY` (foursqare `secret_key`) and `REACT_APP_CLIENT_ID` (foursquare `client_id`). Just run `cp .env.example .env` and fill in missing variables
+You'll need to provide following variables for local graphql server to work: `REACT_APP_SECRET_KEY` (foursqare `secret_key`) and `REACT_APP_CLIENT_ID` (foursquare `client_id`). Just run `cp .env.example .env` and fill in missing variables
 ### Starting graphql server
 GraphQL server uri is speified in client deinition in `App.js`, if you'd like to use local server instead:
 - `cd` to `server` dir and run `yarn && yarn start` to start local GraphQL server
 - replace `uri` in `App.js` with `http://localhost:4000`
 ### Starting front-end
 To start the front-end, run `yarn start`, application will open in browser at `http://localhost:3000`
+Note: If you do use server hosted on now.sh and launch app for the first time, it'll take few second for instance to "spin up" (will take some time to fetch list of venues).
 
 ### Development notes
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) to keep time spent on tooling minimal

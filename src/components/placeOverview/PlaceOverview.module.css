@@ -1,3 +1,30 @@
 .container {
   composes: app from "../home/Home.module.css";
 }
+
+h1 {
+  margin: 0;
+  font-size: 38px;
+  color: var(--black);
+  text-align: left;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.contactInfo {
+  font-weight: 500;
+  color: var(--dark-gray);
+}
+
+.phone {
+  text-decoration: none;
+  color: var(--dark-gray);
+}
+
+.arrow {
+  width: 30px;
+  margin-right: 20px;
+}
