@@ -7,6 +7,9 @@ import {Link} from '@reach/router'
 import Loading from '../shared/Loading'
 import arrowLeft from '../../assets/arrow-left.svg'
 import css from './PlaceOverview.module.css'
+import globe from '../../assets/globe.svg'
+import phone from '../../assets/phone.svg'
+import instagram from '../../assets/instagram.svg'
 
 const GET_VENUE_DETAILS = gql`
   query GetVenueInfo($id: String!) {
@@ -45,7 +48,7 @@ type Props = {
 }
 
 export default class PlaceOverview extends Component<Props> {
-  render() {
+  render() { 
     const {id} = this.props
     
     return (
@@ -58,23 +61,54 @@ export default class PlaceOverview extends Component<Props> {
             if (loading) return <Loading />
             if (error) return `Error!: ${error}`;
             const venue = data.venue
+            const {prefix, suffix} = venue.photo
+            const {contact, url} = venue
 
             console.log(venue);
+            const photo = `${prefix}500${suffix}` 
             
             return (
-              <div className={css.header}>
-                <Link to="/"><img className={css.arrow} src={arrowLeft} alt="arrow left" /></Link>
-                <section>
-                  <h1>{venue.name}</h1>
-                  <span className={css.contactInfo}>
-                    {venue.location.address}, 
-                    <a className={css.phone} href={`tel:${venue.contact.formattedPhone}`}>
-                      {venue.contact.formattedPhone}
-                    </a>
-                  </span>
+              <React.Fragment>
+                <section className={css.header}>
+                  <Link to="/"><img className={css.arrow} src={arrowLeft} alt="arrow left" /></Link>
+                  <section>
+                    <h1 className={css.venueName}>{venue.name}</h1>
+                    <span className={css.venueAddress}>
+                      <span>{venue.location.address}</span>               
+                    </span>
+                  </section>
+                  {venue.rating &&
+                    <section className={css.ratingContainer}>
+                      <span className={css.rating}>
+                        {venue.rating}
+                      </span>
+                    </section>
+                  }                
+                </section> 
+                <section className={css.contacts}>
+                  {contact.formattedPhone &&
+                    <div className={css.phone}>
+                      <a href={`tel:${contact.formattedPhone}`}>
+                        <img className={css.contactIcon} src={phone} alt="Phone icon"/>
+                      </a>
+                    </div>
+                  }
+                  {url &&
+                    <div className={css.url}>
+                      <a href={url}>
+                        <img className={css.contactIcon} src={globe} alt="Website icon"/>
+                      </a>
+                    </div>
+                  }
+                  {contact.instagram &&
+                    <div className={css.instagram}>
+                      <a href={`https://instagram.com/${contact.instagram}`}>
+                        <img className={css.contactIcon} src={instagram} alt="Instagram icon"/>
+                      </a>
+                    </div>
+                  }
                 </section>
-                
-              </div>              
+              </React.Fragment>         
             )
           }}
         </Query>

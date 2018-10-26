@@ -2,29 +2,61 @@
   composes: app from "../home/Home.module.css";
 }
 
-h1 {
+.venueName {
   margin: 0;
+  font-weight: 800;
   font-size: 38px;
-  color: var(--black);
+  color: var(--link-blue);
   text-align: left;
 }
 
 .header {
   display: flex;
   align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-gray);
 }
 
-.contactInfo {
-  font-weight: 500;
+.venueAddress {
+  font-weight: 600;
   color: var(--dark-gray);
 }
 
+.ratingContainer {
+  flex: 1;
+  text-align: right;
+}
+.rating {
+  border: 2px solid var(--dark-blue);
+  display: inline-flex;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 25px;
+  letter-spacing: -1px;
+  font-weight: 800;
+  color: white;
+  background: var(--dark-blue);
+  text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+}
+
 .phone {
-  text-decoration: none;
+  display: block;
   color: var(--dark-gray);
 }
 
 .arrow {
   width: 30px;
   margin-right: 20px;
+}
+
+
+.contacts {
+  display: flex;
+}
+
+.contactIcon {
+  width: 50px;
 }
