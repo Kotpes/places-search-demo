@@ -12,6 +12,7 @@
   background-color: white;
   padding: 10px;
   border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(40,40,40,.1);
 }
 .foundLocation li {
   padding: 15px;

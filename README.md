@@ -4,7 +4,7 @@
 
 ## Run up
 ### Environmental variables
-You'll need to provide following variables for local graphql server to work: `REACT_APP_SECRET_KEY` (foursqare `secret_key`) and `REACT_APP_CLIENT_ID` (foursquare `client_id`). Just run `cp .env.example .env` and fill in missing variables
+You'll need to provide following variables for local graphql server to work: `REACT_APP_SECRET_KEY` (foursqare `secret_key`), `REACT_APP_GOOGLE_API_KEY`(google's API key) and `REACT_APP_CLIENT_ID` (foursquare `client_id`). Just run `cp .env.example .env` and fill in missing variables
 ### Starting graphql server
 GraphQL server uri is speified in client deinition in `App.js`, if you'd like to use local server instead:
 - `cd` to `server` dir and run `yarn && yarn start` to start local GraphQL server

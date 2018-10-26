@@ -63,7 +63,7 @@ class App extends Component<{}, State> {
 
     return (
       <div className={css.app}>
-        <h1 className={css.title}>Search for place</h1>
+        <h1 className={css.title}>Search for a place</h1>
         <Search onChange={(value) => this.onSearch(value)} />
         <Query
           query={GET_SUGGESTED_PLACES}

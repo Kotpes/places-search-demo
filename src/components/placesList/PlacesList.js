@@ -52,12 +52,11 @@ class PlacesList extends React.Component<Props, State> {
 
   render() {
     const {locations} = this.state
-    const {searchQuery, lat, lng} = this.props    
+    const {searchQuery, lat, lng} = this.props
 
     return (
       <section className={css.results}>
-        <h2 className={css.subtitle}>Venues</h2>
-  
+        <h2 className={css.subtitle}>Venues</h2>  
         <ul className={css.foundLocation}>
           {locations.length > 0 && searchQuery === ''
             ? (<List locations={locations}/>)

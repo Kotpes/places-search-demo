@@ -5,6 +5,7 @@ import {Query} from 'react-apollo'
 import gql from 'graphql-tag'
 import {Link} from '@reach/router'
 import Loading from '../shared/Loading'
+import Map from '../map/Map'
 import arrowLeft from '../../assets/arrow-left.svg'
 import css from './PlaceOverview.module.css'
 import globe from '../../assets/globe.svg'
@@ -47,6 +48,15 @@ type Props = {
   id: string
 }
 
+const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY || ''
+const mapURL = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&v=3.exp&libraries=places`
+const mapContainer = {
+  height: `100%`,
+  borderRadius: `5px`,
+  border: `1px solid #ddd`,
+  boxShadow: `0 3px 10px rgba(40,40,40,.1)`
+}
+
 export default class PlaceOverview extends Component<Props> {
   render() { 
     const {id} = this.props
@@ -61,11 +71,10 @@ export default class PlaceOverview extends Component<Props> {
             if (loading) return <Loading />
             if (error) return `Error!: ${error}`;
             const venue = data.venue
-            const {prefix, suffix} = venue.photo
-            const {contact, url} = venue
+            // const {prefix, suffix} = venue.photo
+            const {contact, url, location} = venue
 
             console.log(venue);
-            const photo = `${prefix}500${suffix}` 
             
             return (
               <React.Fragment>
@@ -74,7 +83,7 @@ export default class PlaceOverview extends Component<Props> {
                   <section>
                     <h1 className={css.venueName}>{venue.name}</h1>
                     <span className={css.venueAddress}>
-                      <span>{venue.location.address}</span>               
+                      <span>{location.address}</span>               
                     </span>
                   </section>
                   {venue.rating &&
@@ -108,6 +117,16 @@ export default class PlaceOverview extends Component<Props> {
                     </div>
                   }
                 </section>
+                <Map 
+                  isMarkerShown
+                  disableDefaultUI
+                  googleMapURL={mapURL}
+                  containerElement={<div style={{ height: `400px` }} />}
+                  mapElement={<div style={mapContainer} />}
+                  loadingElement={<div>...Loading</div>}
+                  lat={location.lat}
+                  lng={location.lng}
+                />
               </React.Fragment>         
             )
           }}
