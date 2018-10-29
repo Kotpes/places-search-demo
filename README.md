@@ -13,6 +13,10 @@ GraphQL server uri is speified in client deinition in `App.js`, if you'd like to
 To start the front-end, run `yarn start`, application will open in browser at `http://localhost:3000`
 **Note**: Server is hosted on free account on https://now.sh it might take few second for instance to "spin up" on first time you use it (e.g. will take some time to fetch list of venues for the first time).
 
+## Testing
+App uses [react-test-renderer](https://reactjs.org/docs/test-renderer.html) and [Jest](https://jestjs.io/docs/en/getting-started)
+To run tests use `yarn test` in root directory
+
 ## Demo
 Front-end is accessible on https://search-places-front.now.sh/.
 
