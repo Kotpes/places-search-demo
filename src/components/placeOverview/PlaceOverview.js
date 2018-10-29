@@ -12,7 +12,7 @@ import globe from '../../assets/globe.svg'
 import phone from '../../assets/phone.svg'
 import instagram from '../../assets/instagram.svg'
 
-const GET_VENUE_DETAILS = gql`
+export const GET_VENUE_DETAILS = gql`
   query GetVenueInfo($id: String!) {
     venue(id: $id) {
       id
@@ -73,50 +73,56 @@ export default class PlaceOverview extends Component<Props> {
             const venue = data.venue
             // const {prefix, suffix} = venue.photo
             const {contact, url, location} = venue
-
-            console.log(venue);
             
             return (
               <React.Fragment>
                 <section className={css.header}>
                   <Link to="/"><img className={css.arrow} src={arrowLeft} alt="arrow left" /></Link>
-                  <section>
+                  <section className={css.venueInfo}>
                     <h1 className={css.venueName}>{venue.name}</h1>
                     <span className={css.venueAddress}>
                       <span>{location.address}</span>               
                     </span>
                   </section>
-                  {venue.rating &&
-                    <section className={css.ratingContainer}>
-                      <span className={css.rating}>
-                        {venue.rating}
-                      </span>
-                    </section>
-                  }                
+                  <section className={css.contacts}>
+                    {contact.formattedPhone &&
+                      <div className={css.phone}>
+                        <a href={`tel:${contact.formattedPhone}`}>
+                          <img className={css.contactIcon} src={phone} alt="Phone icon"/>
+                        </a>
+                      </div>
+                    }
+                    {url &&
+                      <div className={css.url}>
+                        <a href={url}>
+                          <img className={css.contactIcon} src={globe} target="_blank" alt="Website icon"/>
+                        </a>
+                      </div>
+                    }
+                    {contact.instagram &&
+                      <div className={css.instagram}>
+                        <a href={`https://instagram.com/${contact.instagram}`}>
+                          <img className={css.contactIcon} src={instagram} target="_blank" alt="Instagram icon"/>
+                        </a>
+                      </div>
+                    }
+                  </section>
+          
+                  <section className={css.ratingContainer}>
+                    {venue.rating ?
+                      (
+                        <span className={css.rating}>
+                          {venue.rating}            
+                        </span>
+                      ) : (
+                        <span className={css.rating}>
+                          ?       
+                        </span>
+                      )
+                    }
+                  </section>
+                                 
                 </section> 
-                <section className={css.contacts}>
-                  {contact.formattedPhone &&
-                    <div className={css.phone}>
-                      <a href={`tel:${contact.formattedPhone}`}>
-                        <img className={css.contactIcon} src={phone} alt="Phone icon"/>
-                      </a>
-                    </div>
-                  }
-                  {url &&
-                    <div className={css.url}>
-                      <a href={url}>
-                        <img className={css.contactIcon} src={globe} alt="Website icon"/>
-                      </a>
-                    </div>
-                  }
-                  {contact.instagram &&
-                    <div className={css.instagram}>
-                      <a href={`https://instagram.com/${contact.instagram}`}>
-                        <img className={css.contactIcon} src={instagram} alt="Instagram icon"/>
-                      </a>
-                    </div>
-                  }
-                </section>
                 <Map 
                   isMarkerShown
                   disableDefaultUI

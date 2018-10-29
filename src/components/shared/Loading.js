@@ -1,3 +1,5 @@
+//@flow
+
 import React from 'react'
 import spinner from '../../assets/Eclipse-1s-200px.svg'
 import css from './Loading.module.css'

@@ -29,7 +29,13 @@ code {
     monospace;
 }
 
-#root > div {
-  display: grid;
-  grid-template-columns: 1fr 600px 1fr;
+#root > div { 
+  padding: 20px;
+}
+
+@media (min-width: 767px) {
+  #root > div {
+    display: grid;
+    grid-template-columns: 1fr 600px 1fr;
+  }
 }

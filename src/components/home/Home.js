@@ -14,7 +14,7 @@ type State = {
 }
 
 
-const GET_SUGGESTED_PLACES = gql`
+export const GET_SUGGESTED_PLACES = gql`
   query GetSuggestedVenues($lat: Float!, $lng: Float!, $limit: Int) {
     suggestedVenues(lat: $lat, lng: $lng, limit: $limit) {
       id
@@ -29,7 +29,7 @@ const GET_SUGGESTED_PLACES = gql`
   }
 `;
 
-class App extends Component<{}, State> {
+class Home extends Component<{}, State> {
   
   state = {
     lat: 60.1957,
@@ -84,4 +84,4 @@ class App extends Component<{}, State> {
   }
 }
 
-export default App;
+export default Home;

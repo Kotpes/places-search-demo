@@ -1,7 +1,14 @@
+
+//@flow
 import * as React from 'react'
 import {withScriptjs, withGoogleMap, GoogleMap, Marker} from 'react-google-maps'
 
-const Map = (props) => {
+type Props = {
+  lat: number,
+  lng: number,
+  isMarkerShown: boolean
+}
+const Map = (props: Props) => {
   const {lat, lng} = props
   return (
     <GoogleMap
