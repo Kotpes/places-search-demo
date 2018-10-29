@@ -1,17 +1,24 @@
 {
-  "name": "nordea-test-app",
+  "name": "location-search-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reach/router": "^1.2.1",
+    "apollo-boost": "^0.1.17",
+    "graphql": "^14.0.2",
     "react": "^16.5.2",
+    "react-apollo": "^2.2.4",
     "react-dom": "^16.5.2",
+    "react-google-maps": "^9.4.5",
+    "react-loadable": "^5.5.0",
     "react-scripts": "2.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node server/server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -24,6 +31,8 @@
   ],
   "devDependencies": {
     "flow-bin": "^0.83.0",
-    "flow-typed": "^2.5.1"
+    "flow-typed": "^2.5.1",
+    "react-test-renderer": "^16.6.0",
+    "waait": "^1.0.2"
   }
 }

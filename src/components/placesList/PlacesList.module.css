@@ -12,13 +12,27 @@
   background-color: white;
   padding: 10px;
   border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(40,40,40,.1);
 }
 .foundLocation li {
   padding: 15px;
   font-weight: bold;
   font-size: 16px;
-  color: var(-link-blue);
+  color: var(--link-blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.foundLocation li a {
+  display: block;
+  text-decoration: none;
+  color: var(--link-blue);
 }
 .foundLocation li:not(:last-child) {
   border-bottom: 1px solid #eee;
+}
+
+.foundLocation li.emptySearchMessage {
+  color: #ddd;
+  font-weight: 300;
 }

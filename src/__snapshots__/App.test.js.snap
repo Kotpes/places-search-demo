@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should match snapshot 1`] = `
+<div
+  role="group"
+  style={
+    Object {
+      "outline": "none",
+    }
+  }
+  tabIndex="-1"
+>
+  <div
+    className="app"
+  >
+    <h1
+      className="title"
+    >
+      Search for a place
+    </h1>
+    <section
+      className="component"
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Start typing"
+        type="text"
+      />
+    </section>
+    <div
+      className="loading"
+    >
+      <img
+        alt="Loading"
+        src="Eclipse-1s-200px.svg"
+      />
+    </div>
+  </div>
+</div>
+`;
