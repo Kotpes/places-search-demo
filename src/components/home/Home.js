@@ -42,7 +42,7 @@ class Home extends Component<{}, State> {
   }
 
   fetchUserLocation = async() => {
-    const res = await fetch('http://ip-api.com/json')
+    const res = await fetch('//ip-api.com/json')
     const location = await res.json()
     this.setState({
       lat: location.lat,

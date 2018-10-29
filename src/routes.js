@@ -7,8 +7,3 @@ export const AsyncHome = Loadable({
   loader: () => import("./components/home/Home"),
   loading: Loading
 });
-
-export const AsyncPlaceOverview = Loadable({
-  loader: () => import("./components/placeOverview/PlaceOverview"),
-  loading: Loading
-});
