@@ -42,13 +42,15 @@ class Home extends Component<{}, State> {
   }
 
   fetchUserLocation = async() => {
-    const res = await fetch('//ip-api.com/json')
-    const location = await res.json()
+    const locationApiURL = process.env.REACT_APP_GOOGLE_API_KEY ? `https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.REACT_APP_GOOGLE_API_KEY}` : ''
+    const res = await fetch(locationApiURL, {method: 'POST'})
+    const locationObject = await res.json()
+    const location = locationObject.location
+    
     this.setState({
       lat: location.lat,
-      lng: location.lon
-    })
-    
+      lng: location.lng
+    })   
   }
 
   onSearch = (value: string) => {
